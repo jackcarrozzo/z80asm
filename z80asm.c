@@ -429,8 +429,11 @@ parse_commandline (int argc, char **argv)
     open_infile (argv[i]);
   if (!infilecount)
     open_infile ("-");
-  if (!out)
-    realoutputfile = openfile (&out, "output file", stdout, "a.bin", "wb");
+  if (!out) {
+    /*realoutputfile = openfile (&out, "output file", stdout, "a.bin", "wb");*/
+		printf("No output file specified! Use -h for help.\n");
+		exit(1);
+	}
   try_use_real_file (realoutputfile, &outfile);
   if (havelist)
     try_use_real_file (reallistfile, &listfile);
